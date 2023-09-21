@@ -39,9 +39,8 @@ yarn dev
 
 ### User Story 1
 
-**As a potential volunteer, I want to see an overview of all possible non-profit organizations so that I can choose which organization I want to assist.**
+**As a potential volunteer, I want to see an overview of non-profit organizations so that I can choose which organization I want to assist.**
 
 **Acceptance Criteria**
 
 - I should see a list of non-profit organizations with their names, brief descriptions and a picture or logo.
-- Each organization in the list should have a clickable link or button to access more detailed information.
