@@ -43,4 +43,4 @@ yarn dev
 
 **Acceptance Criteria**
 
-- I should see a list of non-profit organizations with their names, brief descriptions and a picture or logo.
+- I should see a list of 5 non-profit organizations with their names, brief descriptions and a picture or logo.
