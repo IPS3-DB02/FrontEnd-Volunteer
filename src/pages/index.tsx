@@ -1,6 +1,12 @@
 import Image from 'next/image'
 import volunteerLogo from '../images/VolunteerLogo.png'
 import Link from 'next/link'
+import {
+  MegaphoneIcon,
+  StarIcon,
+  Cog6ToothIcon,
+  ArrowRightOnRectangleIcon,
+} from '@heroicons/react/24/solid'
 
 const Home = () => {
   return (
@@ -12,19 +18,25 @@ const Home = () => {
           <div className="menuContainer">
             <Link href={'/'}>
               <div className="menuItem">
-                <div className="menuButton">icon</div>
+                <div className="menuButton">
+                  <MegaphoneIcon className="h-8.5 w-8.5" />
+                </div>
                 <div className="menuTitle">VOLUNTEER</div>
               </div>
             </Link>
             <Link href={'/'}>
               <div className="menuItem">
-                <div className="menuButton">icon</div>
+                <div className="menuButton">
+                  <StarIcon className="h-8.5 w-8.5" />
+                </div>
                 <div className="menuTitle">FAVOURITES</div>
               </div>
             </Link>
             <Link href={'/'}>
               <div className="menuItem">
-                <div className="menuButton">icon</div>
+                <div className="menuButton">
+                  <Cog6ToothIcon className="h-8.5 w-8.5" />
+                </div>
                 <div className="menuTitle">SETTINGS</div>
               </div>
             </Link>
@@ -32,7 +44,9 @@ const Home = () => {
           <div className="menuContainerLogInOut">
             <Link href={'/'}>
               <div className="menuItem">
-                <div className="menuButton">icon</div>
+                <div className="menuButton">
+                  <ArrowRightOnRectangleIcon className="h-8.5 w-8.5" />
+                </div>
                 <div className="menuTitle">LOG OUT</div>
               </div>
             </Link>
