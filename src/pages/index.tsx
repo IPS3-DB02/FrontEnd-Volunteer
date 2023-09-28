@@ -7,13 +7,51 @@ import {
   Cog6ToothIcon,
   ArrowRightOnRectangleIcon,
 } from '@heroicons/react/24/solid'
+import VolunteerListItem from '@/components/volunteerListItem'
+
+const volunteerListItems = [
+  {
+    id: 1,
+    title: 'First organisation',
+    content: 'Content/Description of the first organisation.',
+  },
+  {
+    id: 2,
+    title: 'Second organisation',
+    content: 'Content/Description of the second organisation.',
+  },
+  {
+    id: 3,
+    title: 'Third organisation',
+    content: 'Content/Description of the third organisation.',
+  },
+  {
+    id: 4,
+    title: 'Fourth organisation',
+    content: 'Content/Description of the fourth organisation.',
+  },
+  {
+    id: 5,
+    title: 'Fifth organisation',
+    content: 'Content/Description of the fifth organisation.',
+  },
+  {
+    id: 6,
+    title: 'Sixth organisation',
+    content: 'Content/Description of the sixth organisation.',
+  },
+  {
+    id: 7,
+    title: 'Seventh organisation',
+    content: 'Content/Description of the seventh organisation.',
+  },
+]
 
 const Home = () => {
   return (
     <div className={'container2'}>
       <div className={'sidebar'}>
         <Image className="logo" src={volunteerLogo} alt="Volunteer Logo" />
-        {/* Plaats hier je zijbalkinhoud */}
         <div className="menuContainer">
           <div className="menuContainer">
             <Link href={'/'}>
@@ -55,23 +93,12 @@ const Home = () => {
       </div>
       <div className={'content'}>
         <div className={'scrollableContent'}>
-          {/* Plaats hier je scrollbare inhoud */}
-          <div className="volunteerBlock">
-            <h1>Organisation 1</h1>
-          </div>
-          <div className="volunteerBlock">
-            <h1>Organisation 2</h1>
-          </div>
-          <div className="volunteerBlock">
-            <h1>Organisation 3</h1>
-          </div>
-          <div className="volunteerBlock"></div>
-          <div className="volunteerBlock"></div>
-          <div className="volunteerBlock"></div>
-          <div className="volunteerBlock"></div>
-          <div className="volunteerBlock"></div>
-          <div className="volunteerBlock"></div>
-          {/* Voeg hier de rest van je inhoud toe */}
+          {volunteerListItems.map((volunteerItem) => (
+            <VolunteerListItem
+              key={volunteerItem.id}
+              volunteerItem={volunteerItem}
+            />
+          ))}
         </div>
       </div>
     </div>
