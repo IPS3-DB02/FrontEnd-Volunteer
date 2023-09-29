@@ -1,8 +1,8 @@
 import React from 'react'
 
 interface VolunteerItem {
-  title: string
-  content: string
+  name: string
+  description: string
 }
 
 interface Props {
@@ -12,8 +12,8 @@ interface Props {
 const VolunteerListItem: React.FC<Props> = ({ volunteerItem }) => {
   return (
     <div className="volunteerBlock">
-      <h1>{volunteerItem.title}</h1>
-      <p>{volunteerItem.content}</p>
+      <h1>{volunteerItem.name}</h1>
+      <p>{volunteerItem.description}</p>
     </div>
   )
 }
