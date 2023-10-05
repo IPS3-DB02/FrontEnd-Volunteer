@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import volunteerLogo from '../images/VolunteerLogo.png'
+import volunteerLogo from '@/images/VolunteerLogo.png'
 import Link from 'next/link'
 import {
   MegaphoneIcon,
@@ -8,46 +9,30 @@ import {
   ArrowRightOnRectangleIcon,
 } from '@heroicons/react/24/solid'
 import VolunteerListItem from '@/components/volunteerListItem'
+import axios from 'axios'
 
-const volunteerListItems = [
-  {
-    id: 1,
-    title: 'First organisation',
-    content: 'Content/Description of the first organisation.',
-  },
-  {
-    id: 2,
-    title: 'Second organisation',
-    content: 'Content/Description of the second organisation.',
-  },
-  {
-    id: 3,
-    title: 'Third organisation',
-    content: 'Content/Description of the third organisation.',
-  },
-  {
-    id: 4,
-    title: 'Fourth organisation',
-    content: 'Content/Description of the fourth organisation.',
-  },
-  {
-    id: 5,
-    title: 'Fifth organisation',
-    content: 'Content/Description of the fifth organisation.',
-  },
-  {
-    id: 6,
-    title: 'Sixth organisation',
-    content: 'Content/Description of the sixth organisation.',
-  },
-  {
-    id: 7,
-    title: 'Seventh organisation',
-    content: 'Content/Description of the seventh organisation.',
-  },
-]
+interface Organization {
+  id: number
+  name: string
+  description: string
+  website: string
+  logo: string
+}
 
 const Home = () => {
+  const [organizations, setOrganizations] = useState([])
+
+  useEffect(() => {
+    axios
+      .get('/api/organizations')
+      .then((response) => {
+        setOrganizations(response.data)
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error)
+      })
+  }, [])
+
   return (
     <div className={'container2'}>
       <div className={'sidebar'}>
@@ -57,7 +42,7 @@ const Home = () => {
             <Link href={'/'}>
               <div className="menuItem">
                 <div className="menuButton">
-                  <MegaphoneIcon className="h-8.5 w-8.5" />
+                  <MegaphoneIcon />
                 </div>
                 <div className="menuTitle">VOLUNTEER</div>
               </div>
@@ -65,7 +50,7 @@ const Home = () => {
             <Link href={'/'}>
               <div className="menuItem">
                 <div className="menuButton">
-                  <StarIcon className="h-8.5 w-8.5" />
+                  <StarIcon />
                 </div>
                 <div className="menuTitle">FAVOURITES</div>
               </div>
@@ -73,7 +58,7 @@ const Home = () => {
             <Link href={'/'}>
               <div className="menuItem">
                 <div className="menuButton">
-                  <Cog6ToothIcon className="h-8.5 w-8.5" />
+                  <Cog6ToothIcon />
                 </div>
                 <div className="menuTitle">SETTINGS</div>
               </div>
@@ -83,7 +68,7 @@ const Home = () => {
             <Link href={'/'}>
               <div className="menuItem">
                 <div className="menuButton">
-                  <ArrowRightOnRectangleIcon className="h-8.5 w-8.5" />
+                  <ArrowRightOnRectangleIcon />
                 </div>
                 <div className="menuTitle">LOG OUT</div>
               </div>
@@ -93,10 +78,10 @@ const Home = () => {
       </div>
       <div className={'content'}>
         <div className={'scrollableContent'}>
-          {volunteerListItems.map((volunteerItem) => (
+          {organizations.map((organization: Organization) => (
             <VolunteerListItem
-              key={volunteerItem.id}
-              volunteerItem={volunteerItem}
+              key={organization.id}
+              volunteerItem={organization}
             />
           ))}
         </div>
