@@ -8,16 +8,6 @@
     background-color: #1a1f2b;
   }
 
-  @font-face {
-    font-family: 'Brandish';
-    src: url('/src/fonts/brandishregular.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'Century Gothic';
-    src: url('/src/fonts/CenturyGothic.ttf') format('truetype');
-  }
-
   .container2 {
     display: flex;
     height: 100vh;
@@ -58,7 +48,7 @@
     height: 180px;
     border-radius: 20px;
     background-image: linear-gradient(to right, #ff6600, #ff973e);
-    font-family: 'Century Gothic', sans-serif;
+    font-family: var(--font-century-gothic);
     font-weight: bold;
     color: #ffffff;
   }
@@ -96,7 +86,7 @@
   }
 
   .menuTitle {
-    font-family: 'Brandish', sans-serif;
+    font-family: var(--font-brandish);
     font-size: 26px;
     margin-left: 20px;
     margin-top: 10px;
