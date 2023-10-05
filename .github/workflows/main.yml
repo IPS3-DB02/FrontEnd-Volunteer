@@ -18,8 +18,11 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install Yarn
+        run: npm install -g yarn
 
-      - name: Build Next.js app
-        run: npm run build
+      - name: Install dependencies using Yarn
+        run: yarn install
+
+      - name: Build Next.js app using Yarn
+        run: yarn build
