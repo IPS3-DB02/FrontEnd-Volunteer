@@ -6,10 +6,10 @@ import {
   MegaphoneIcon,
   StarIcon,
   Cog6ToothIcon,
-  ArrowRightOnRectangleIcon,
 } from '@heroicons/react/24/solid'
 import VolunteerListItem from '@/components/volunteerListItem'
 import axios from 'axios'
+import LoginLogoutButton from '@/components/loginLogoutButton'
 
 interface Organization {
   id: number
@@ -64,16 +64,7 @@ const Home = () => {
               </div>
             </Link>
           </div>
-          <div className="menuContainerLogInOut">
-            <Link href={'/'}>
-              <div className="menuItem">
-                <div className="menuButton">
-                  <ArrowRightOnRectangleIcon />
-                </div>
-                <div className="menuTitle">LOG OUT</div>
-              </div>
-            </Link>
-          </div>
+          <LoginLogoutButton />
         </div>
       </div>
       <div className={'content'}>
