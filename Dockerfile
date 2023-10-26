@@ -8,12 +8,12 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 
 # Install project dependencies using Yarn
-RUN yarn install
+RUN yarn install --frozen-lockfile
 
 # Copy the rest of the application code to the container
 COPY . .
 
-# Build the application (replace this with the appropriate build command for your project)
+# Build the application
 RUN yarn build
 
 # Expose port 3000 to allow external access

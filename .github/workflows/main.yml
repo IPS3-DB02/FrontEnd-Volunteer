@@ -22,7 +22,13 @@ jobs:
         run: npm install -g yarn
 
       - name: Install dependencies using Yarn
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
       - name: Build Next.js app using Yarn
         run: yarn build
+
+      - name: Build Docker Image
+        run: docker build -t volunteer-frontend .
+
+      - name: Test Docker Image
+        run: docker run -t volunteer-frontend
