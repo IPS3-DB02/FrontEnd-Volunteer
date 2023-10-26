@@ -27,8 +27,8 @@ function LoginLogoutButton() {
 
   if (user) {
     return (
-      <div
-        role="button"
+      <button
+        type="button"
         className="menuContainerLogInOut"
         onClick={() =>
           logout({
@@ -42,12 +42,12 @@ function LoginLogoutButton() {
           </div>
           <div className="menuTitle">LOG OUT</div>
         </div>
-      </div>
+      </button>
     )
   } else {
     return (
-      <div
-        role="button"
+      <button
+        type="button"
         className="menuContainerLogInOut"
         onClick={() => loginWithRedirect()}
       >
@@ -59,7 +59,7 @@ function LoginLogoutButton() {
             <div className="menuTitle">LOG IN</div>
           </div>
         </Link>
-      </div>
+      </button>
     )
   }
 }
