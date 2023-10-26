@@ -2,6 +2,7 @@ import '@/styles/globals.scss'
 import type { AppProps } from 'next/app'
 import { Roboto } from 'next/font/google'
 import localFont from 'next/font/local'
+import { UserProvider } from '@auth0/nextjs-auth0/client'
 
 const roboto = Roboto({
   weight: ['100', '300', '400', '500', '700', '900'],
@@ -14,7 +15,7 @@ const centuryGothic = localFont({ src: '../fonts/centurygothic.ttf' })
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <>
+    <UserProvider>
       <style jsx global>
         {`
           :root {
@@ -25,7 +26,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         `}
       </style>
       <Component {...pageProps} />
-    </>
+    </UserProvider>
   )
 }
 
