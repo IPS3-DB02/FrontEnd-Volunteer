@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { useAuth0 } from '@auth0/auth0-react'
+import { useUser } from '@auth0/nextjs-auth0/client'
 import {
   WrenchScrewdriverIcon,
   ArrowRightOnRectangleIcon,
@@ -8,8 +8,7 @@ import {
 } from '@heroicons/react/24/solid'
 
 function LoginLogoutButton() {
-  const { user, isLoading, loginWithRedirect, logout } = useAuth0()
-
+  const { user, isLoading } = useUser()
   if (isLoading) {
     return (
       <div className="menuContainerLogInOut">
@@ -24,42 +23,31 @@ function LoginLogoutButton() {
       </div>
     )
   }
-
   if (user) {
     return (
-      <button
-        type="button"
-        className="menuContainerLogInOut"
-        onClick={() =>
-          logout({
-            logoutParams: { returnTo: window.location.origin },
-          })
-        }
-      >
-        <div className="menuItem">
-          <div className="menuButton">
-            <ArrowRightOnRectangleIcon />
+      <Link href={'/api/auth/logout'}>
+        <div className="menuContainerLogInOut">
+          <div className="menuItem">
+            <div className="menuButton">
+              <ArrowRightOnRectangleIcon />
+            </div>
+            <div className="menuTitle">LOG OUT</div>
           </div>
-          <div className="menuTitle">LOG OUT</div>
         </div>
-      </button>
+      </Link>
     )
   } else {
     return (
-      <button
-        type="button"
-        className="menuContainerLogInOut"
-        onClick={() => loginWithRedirect()}
-      >
-        <Link href={'/'}>
+      <Link href={'/api/auth/login'}>
+        <div className="menuContainerLogInOut">
           <div className="menuItem">
             <div className="menuButton">
               <ArrowLeftOnRectangleIcon />
             </div>
             <div className="menuTitle">LOG IN</div>
           </div>
-        </Link>
-      </button>
+        </div>
+      </Link>
     )
   }
 }
