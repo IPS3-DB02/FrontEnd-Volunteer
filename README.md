@@ -41,13 +41,11 @@ yarn dev
 
 **As a potential volunteer, I want to see an overview of non-profit organizations so that I can choose which organization I want to assist.**
 
+**Acceptance Criteria**
 
+- I should see a list of 5 non-profit organizations with their names, brief descriptions and a picture or logo.
 
 ## Joost
 
 
 ## Sjoerd
-
-**Acceptance Criteria**
-
-- I should see a list of 5 non-profit organizations with their names, brief descriptions and a picture or logo.
