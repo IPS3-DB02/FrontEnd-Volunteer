@@ -1,51 +1,36 @@
-# Volunteer Project
-
-The Volunteer Project is designed to facilitate and streamline the process of connecting potential volunteers with non-profit organizations. It provides a user-friendly web interface through which users can explore and learn about various non-profit organizations and their missions.
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-### Production
+First, run the development server:
 
 ```bash
-git clone https://github.com/VolunteerConnect/VolunteerFrontend
-yarn build
-yarn start
-```
-
-### Development
-
-```bash
-git clone https://github.com/VolunteerConnect/VolunteerFrontend
-yarn prepare
+npm run dev
+# or
 yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## Tech Stack
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- Frontend: Next.js
-- Backend: ASP.NET Core Web API
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Definition of Done
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-- Code follows coding standards and best practices.
-- All code related to the user story or feature is written and reviewed.
-- Code has been reviewed by at least one other team member for quality, correctness, and adherence to coding standards.
-- Any identified issues or improvements have been addressed.
-- The user story or feature has undergone user acceptance testing by stakeholders or users.
-- There are no known defects or critical issues related to the user story or feature.
-- The code is ready for deployment to the production environment.
+## Learn More
 
-## User Stories
+To learn more about Next.js, take a look at the following resources:
 
-### User Story 1
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-**As a potential volunteer, I want to see an overview of non-profit organizations so that I can choose which organization I want to assist.**
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-**Acceptance Criteria**
+## Deploy on Vercel
 
-- I should see a list of 5 non-profit organizations with their names, brief descriptions and a picture or logo.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## Joost
-
-
-## Sjoerd
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

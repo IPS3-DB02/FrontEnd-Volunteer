@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import volunteerLogo from '@/images/VolunteerLogo.png'
 import Link from 'next/link'
 import {
   MegaphoneIcon,
   StarIcon,
   Cog6ToothIcon,
 } from '@heroicons/react/24/solid'
-import VolunteerListItem from '@/components/volunteerListItem'
 import axios from 'axios'
+
+import https from 'https'
+
+import VolunteerListItem from '@/components/volunteerListItem'
 import LoginLogoutButton from '@/components/loginLogoutButton'
+
+import volunteerLogo from '../../public/images/VolunteerLogo.png'
 
 interface Organization {
   id: number
@@ -19,20 +22,31 @@ interface Organization {
   logo: string
 }
 
-const Home = () => {
-  const [organizations, setOrganizations] = useState([])
+const getOrganizations = async () => {
+  const agent = new https.Agent({
+    rejectUnauthorized: false,
+  })
 
-  useEffect(() => {
-    axios
-      .get('/api/organizations')
-      .then((response) => {
-        setOrganizations(response.data)
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error)
-      })
-  }, [])
+  try {
+    const response = await axios.get(
+      'https://localhost:7177/api/organizations',
+      {
+        httpsAgent: agent,
+      }
+    )
 
+    if (!response.data) {
+      throw new Error('Failed to fetch data')
+    }
+
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+const Home = async () => {
+  const organizations = await getOrganizations()
   return (
     <div className={'container2'}>
       <div className={'sidebar'}>

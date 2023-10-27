@@ -11,18 +11,18 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: lts/*
 
       - name: Install Yarn
         run: npm install -g yarn
 
       - name: Install dependencies using Yarn
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
       - name: Build Next.js app using Yarn
         run: yarn build
