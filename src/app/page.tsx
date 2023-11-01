@@ -36,12 +36,13 @@ const getOrganizations = async () => {
     )
 
     if (!response.data) {
-      throw new Error('Failed to fetch data')
+      throw new Error('No data received when fetching organizations')
     }
 
     return response.data
   } catch (error) {
-    throw error
+    console.error('Error occurred while fetching organizations:', error);
+    throw error;
   }
 }
 
