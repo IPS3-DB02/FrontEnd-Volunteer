@@ -1,4 +1,4 @@
-# Volunteer Project
+# Volunteer Front-End
 
 The Volunteer Project is designed to facilitate and streamline the process of connecting potential volunteers with non-profit organizations. It provides a user-friendly web interface through which users can explore and learn about various non-profit organizations and their missions.
 
@@ -23,7 +23,12 @@ yarn dev
 ## Tech Stack
 
 - Frontend: Next.js
-- Backend: ASP.NET Core Web API
+
+We chose Next.js for our project because of its exceptional blend of performance, SEO benefits, and developer convenience. Next.js offers Server-Side Rendering (SSR) for faster page loading and improved SEO, giving my project a competitive edge. The framework's focus on performance optimization through features like automatic code splitting and pre-rendering ensures an excellent user experience. Its developer-friendly features, including hot module replacement and built-in support for CSS, simplify the development process. The thriving Next.js community and ecosystem provide ample resources and support. With Next.js, I have a versatile and production-ready tool at my disposal, ready to help me build a high-quality web application.
+
+- Authentication and authorization service: Auth0
+
+We selected Auth0 for our project because it provides a reliable and straightforward solution for user authentication and identity management. Its robust security features, ease of integration, and strong documentation streamline the development process. Auth0 offers a secure and efficient way to manage user identities, making it the right choice for our project's authentication needs.
 
 ## Definition of Done
 
@@ -44,6 +49,10 @@ yarn dev
 **Acceptance Criteria**
 
 - I should see a list of 5 non-profit organizations with their names, brief descriptions and a picture or logo.
+
+## Components
+
+In NextJs, we use components because we don't want to write code twice. When we can reuse code, we will with components.
 
 ## Joost
 
