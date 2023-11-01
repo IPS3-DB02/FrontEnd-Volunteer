@@ -41,8 +41,8 @@ const getOrganizations = async () => {
 
     return response.data
   } catch (error) {
-    console.error('Error occurred while fetching organizations:', error);
-    throw error;
+    console.error('Error occurred while fetching organizations:', error)
+    throw error
   }
 }
 
