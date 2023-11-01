@@ -12,6 +12,21 @@
       {
         "cssFiles": ["**/*.scss"]
       }
+    ],
+
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "external",
+          "builtin",
+          "internal",
+          "sibling",
+          "parent",
+          "index"
+        ],
+        "newlines-between": "always"
+      }
     ]
   }
 }
