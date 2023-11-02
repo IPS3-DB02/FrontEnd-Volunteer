@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import {
@@ -5,9 +7,7 @@ import {
   StarIcon,
   Cog6ToothIcon,
 } from '@heroicons/react/24/solid'
-import axios from 'axios'
-
-import https from 'https'
+import React, { useEffect, useState } from 'react'
 
 import VolunteerListItem from '@/components/volunteerListItem'
 import LoginLogoutButton from '@/components/loginLogoutButton'
@@ -22,32 +22,25 @@ interface Organization {
   logo: string
 }
 
-const getOrganizations = async () => {
-  const agent = new https.Agent({
-    rejectUnauthorized: false,
-  })
+const Home = () => {
+  const [organizations, setOrganizations] = useState<Organization[]>([])
 
-  try {
-    const response = await axios.get(
-      'https://localhost:7177/api/organizations',
-      {
-        httpsAgent: agent,
-      }
-    )
+  useEffect(() => {
+    fetch(process.env.NEXT_PUBLIC_API_BASE_URL + '/organizations')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok')
+        }
+        return response.json()
+      })
+      .then((data) => {
+        setOrganizations(data)
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error)
+      })
+  }, [])
 
-    if (!response.data) {
-      throw new Error('No data received when fetching organizations')
-    }
-
-    return response.data
-  } catch (error) {
-    console.error('Error occurred while fetching organizations:', error)
-    throw error
-  }
-}
-
-const Home = async () => {
-  const organizations = await getOrganizations()
   return (
     <div className={'container2'}>
       <div className={'sidebar'}>
