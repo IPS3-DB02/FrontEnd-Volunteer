@@ -1,3 +1,5 @@
+import React from 'react'
+
 interface VolunteerItem {
   name: string
   description: string
