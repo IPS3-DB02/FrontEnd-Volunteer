@@ -10,7 +10,9 @@ import {
 import React, { useState } from 'react'
 import { Switch } from '@headlessui/react'
 import { useUser } from '@auth0/nextjs-auth0/client'
+
 import LoginLogoutButton from '@/components/loginLogoutButton'
+
 import volunteerLogo from '../../../public/images/VolunteerLogo.png'
 
 const Home = () => {
