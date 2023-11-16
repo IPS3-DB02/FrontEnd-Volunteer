@@ -33,6 +33,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       lang="en"
       className={`${brandish.variable} ${centuryGothic.variable}`}
     >
+      
       <UserProvider>
         <body className={roboto.className}>{children}</body>
       </UserProvider>

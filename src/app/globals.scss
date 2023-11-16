@@ -1,5 +1,7 @@
 @tailwind base;
+
 @tailwind components;
+
 @tailwind utilities;
 
 @layer base {
@@ -101,5 +103,38 @@
     padding: 20px;
     margin-top: 20px;
     text-align: center;
+  }
+
+  .settingsContainer {
+    color: #fff;
+    padding: 20px;
+  }
+
+  .settingItem{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .settingsText{
+    padding-right: 10px;
+  }
+
+  .settingInput{
+    outline: none;
+    background-color: #414654;
+    border-radius: 20px;
+  }
+
+  .settingsTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 32px;
+    color: #ff6600;
+    font-family: var(--font-brandish);
   }
 }
