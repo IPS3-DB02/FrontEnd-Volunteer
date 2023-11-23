@@ -12,7 +12,7 @@ import React, { useEffect, useState } from 'react'
 import VolunteerListItem from '@/components/volunteerListItem'
 import LoginLogoutButton from '@/components/loginLogoutButton'
 
-import volunteerLogo from '../../public/images/VolunteerLogo.png'
+import volunteerLogo from '../../../public/images/VolunteerLogo.png'
 
 interface Organization {
   id: number
