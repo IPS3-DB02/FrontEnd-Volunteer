@@ -16,10 +16,13 @@ import volunteerLogo from '../../public/images/VolunteerLogo.png'
 
 interface Organization {
   id: number
+  organization_user_id: number
   name: string
   description: string
+  descriptionLong: string
+  email: string
   website: string
-  logo: string
+  banner_image: string
 }
 
 const Home = () => {
