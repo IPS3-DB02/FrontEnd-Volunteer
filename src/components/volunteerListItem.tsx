@@ -1,7 +1,7 @@
 import StarOutlineIcon from '@heroicons/react/24/outline/StarIcon'
-// import StarSolidIcon from '@heroicons/react/24/solid/StarIcon'
+import StarSolidIcon from '@heroicons/react/24/solid/StarIcon'
 import { Link } from '@nextui-org/react'
-import React from 'react'
+import React, { useState } from 'react'
 
 interface VolunteerItem {
   id: number
@@ -19,6 +19,12 @@ interface Props {
 }
 
 const VolunteerListItem: React.FC<Props> = ({ volunteerItem }) => {
+  const [isFavorited, setIsFavorited] = useState(false)
+
+  const handleToggleFavorite = () => {
+    setIsFavorited(!isFavorited)
+  }
+
   return (
     <div className="volunteerBlock">
       <h1>{volunteerItem.name}</h1>
@@ -32,8 +38,12 @@ const VolunteerListItem: React.FC<Props> = ({ volunteerItem }) => {
           </Link>
         </div>
         <div className="block">
-          <div className="favouriteStar">
-            <StarOutlineIcon />
+          <div
+            className="favouriteStar"
+            onClick={handleToggleFavorite}
+            data-testid="favorite-star"
+          >
+            {isFavorited ? <StarSolidIcon /> : <StarOutlineIcon />}
           </div>
         </div>
       </div>
