@@ -37,14 +37,19 @@ const VolunteerListItem: React.FC<Props> = ({ volunteerItem }) => {
             </div>
           </Link>
         </div>
-        <div className="block">
-          <div
-            className="favouriteStar"
-            onClick={handleToggleFavorite}
-            data-testid="favorite-star"
-          >
-            {isFavorited ? <StarSolidIcon /> : <StarOutlineIcon />}
-          </div>
+        <div
+          className="favouriteStar"
+          onClick={handleToggleFavorite}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              handleToggleFavorite()
+            }
+          }}
+          role="button"
+          tabIndex={0}
+          data-testid="favorite-star"
+        >
+          {isFavorited ? <StarSolidIcon /> : <StarOutlineIcon />}
         </div>
       </div>
     </div>
