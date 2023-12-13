@@ -40,21 +40,14 @@ We selected Auth0 for our project because it provides a reliable and straightfor
 - There are no known defects or critical issues related to the user story or feature.
 - The code is ready for deployment to the production environment.
 
-## User Stories
+## Components
 
-### User Story 1
+In NextJs, we use components because we don't want to write code twice. When we can reuse code, we will with components.
+
+## User Story
 
 **As a potential volunteer, I want to see an overview of non-profit organizations so that I can choose which organization I want to assist.**
 
 **Acceptance Criteria**
 
 - I should see a list of 5 non-profit organizations with their names, brief descriptions and a picture or logo.
-
-## Components
-
-In NextJs, we use components because we don't want to write code twice. When we can reuse code, we will with components.
-
-## Joost
-
-
-## Sjoerd
