@@ -8,11 +8,13 @@ import {
   Cog6ToothIcon,
 } from '@heroicons/react/24/solid'
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'next/navigation'
+import { useUser } from '@auth0/nextjs-auth0/client'
 
 import VolunteerListItem from '@/components/volunteerListItem'
 import LoginLogoutButton from '@/components/loginLogoutButton'
 
-import volunteerLogo from '../../../public/images/VolunteerLogo.png'
+import volunteerLogo from '@/../public/images/VolunteerLogo.png'
 
 interface Organization {
   id: number
@@ -25,24 +27,56 @@ interface Organization {
   banner_image: string
 }
 
-const Home = () => {
+interface Favorite {
+  id: number
+  userId: string
+  favoriteOrganizationId: number
+}
+
+export default function Page() {
+  const { user, isLoading } = useUser()
+  const userId = user?.sub
+  const { slug } = useParams()
+
   const [organizations, setOrganizations] = useState<Organization[]>([])
+  const [favorites, setFavorites] = useState<Favorite[]>([])
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_API_BASE_URL + '/organizations')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok')
-        }
-        return response.json()
-      })
-      .then((data) => {
-        setOrganizations(data)
-      })
-      .catch((error) => {
+    const fetchFavoriteOrganizations = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/favorites/${slug}/organisations`
+        )
+
+        const organizationsData = await res.json()
+        setOrganizations(organizationsData)
+      } catch (error) {
         console.error('Error fetching data:', error)
-      })
-  }, [])
+      }
+    }
+
+    const fetchFavorites = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/favorites/${slug}`
+        )
+
+        const favoritesData = await res.json()
+        setFavorites(favoritesData)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    }
+
+    if (slug) {
+      fetchFavoriteOrganizations()
+      fetchFavorites()
+    }
+  }, [slug, userId])
+
+  if (!organizations || isLoading) {
+    return <div className="organizationContainer">Loading...</div>
+  }
 
   return (
     <div className={'container2'}>
@@ -58,7 +92,7 @@ const Home = () => {
                 <div className="menuTitle">VOLUNTEER</div>
               </div>
             </Link>
-            <Link href={'/favourites'}>
+            <Link href={`/favorites/${userId}`}>
               <div className="menuItem">
                 <div className="menuButton">
                   <StarIcon />
@@ -84,6 +118,7 @@ const Home = () => {
             <VolunteerListItem
               key={organization.id}
               volunteerItem={organization}
+              favorites={favorites}
             />
           ))}
         </div>
@@ -91,5 +126,3 @@ const Home = () => {
     </div>
   )
 }
-
-export default Home
