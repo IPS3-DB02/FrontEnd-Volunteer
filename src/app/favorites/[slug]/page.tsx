@@ -13,7 +13,6 @@ import { useUser } from '@auth0/nextjs-auth0/client'
 
 import VolunteerListItem from '@/components/volunteerListItem'
 import LoginLogoutButton from '@/components/loginLogoutButton'
-
 import volunteerLogo from '@/../public/images/VolunteerLogo.png'
 
 interface Organization {

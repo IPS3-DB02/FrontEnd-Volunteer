@@ -16,7 +16,7 @@ test('VolunteerListItem renders with the correct data', () => {
     banner_image: 'image-source',
   }
 
-  render(<VolunteerListItem volunteerItem={volunteerItem} />)
+  render(<VolunteerListItem volunteerItem={volunteerItem} favorites={[]} />)
 
   const name = screen.getByText(volunteerItem.name)
   const description = screen.getByText(volunteerItem.description)
