@@ -1,6 +1,7 @@
 import StarOutlineIcon from '@heroicons/react/24/outline/StarIcon'
 import StarSolidIcon from '@heroicons/react/24/solid/StarIcon'
 import { Link } from '@nextui-org/react'
+import { useUser } from '@auth0/nextjs-auth0/client'
 import { useState } from 'react'
 import React from 'react'
 import axios from 'axios'
@@ -28,6 +29,9 @@ interface Props {
 }
 
 const VolunteerListItem: React.FC<Props> = ({ volunteerItem, favorites }) => {
+  const { user } = useUser()
+  const userId = user?.sub
+
   const [isFavorite, setIsFavorite] = useState(
     favorites.some(
       (favorite) => favorite.favoriteOrganizationId === volunteerItem.id
@@ -49,7 +53,7 @@ const VolunteerListItem: React.FC<Props> = ({ volunteerItem, favorites }) => {
       } else {
         await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/favorite`, {
           id: Math.floor(Math.random() * (9999999 - 1 + 1)) + 1,
-          userId: favorites[0].userId,
+          userId: userId,
           favoriteOrganizationId: volunteerItem.id,
         })
       }
