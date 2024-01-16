@@ -1,6 +1,8 @@
+'use client'
+
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-
+import { UserProvider } from '@auth0/nextjs-auth0/client'
 import '@testing-library/jest-dom'
 import VolunteerListItem from '../src/components/volunteerListItem'
 
@@ -16,7 +18,11 @@ test('VolunteerListItem renders with the correct data', () => {
     banner_image: 'image-source',
   }
 
-  render(<VolunteerListItem volunteerItem={volunteerItem} />)
+  render(
+    <UserProvider>
+      <VolunteerListItem volunteerItem={volunteerItem} favorites={[]} />
+    </UserProvider>
+  )
 
   const name = screen.getByText(volunteerItem.name)
   const description = screen.getByText(volunteerItem.description)

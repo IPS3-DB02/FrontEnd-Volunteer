@@ -8,6 +8,7 @@ import {
   Cog6ToothIcon,
 } from '@heroicons/react/24/solid'
 import React, { useEffect, useState } from 'react'
+import { useUser } from '@auth0/nextjs-auth0/client'
 
 import VolunteerListItem from '@/components/volunteerListItem'
 import LoginLogoutButton from '@/components/loginLogoutButton'
@@ -25,25 +26,55 @@ interface Organization {
   banner_image: string
 }
 
-const Home = () => {
+interface Favorite {
+  id: number
+  userId: string
+  favoriteOrganizationId: number
+}
+
+export default function Home() {
+  const { user, isLoading } = useUser()
+  const userId = user?.sub
+
   const [organizations, setOrganizations] = useState<Organization[]>([])
+  const [favorites, setFavorites] = useState<Favorite[]>([])
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_API_BASE_URL + '/organizations')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok')
-        }
-        return response.json()
-      })
-      .then((data) => {
-        setOrganizations(data)
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error)
-      })
-  }, [])
+    const fetchFavoriteOrganizations = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/organizations/`
+        )
 
+        const organizationsData = await res.json()
+        setOrganizations(organizationsData)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    }
+
+    const fetchFavorites = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/favorites/${userId}`
+        )
+
+        const favoritesData = await res.json()
+        setFavorites(favoritesData)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    }
+
+    if (userId) {
+      fetchFavoriteOrganizations()
+      fetchFavorites()
+    }
+  }, [userId])
+
+  if (!organizations || isLoading) {
+    return <div className="organizationContainer">Loading...</div>
+  }
   return (
     <div className={'container2'}>
       <div className={'sidebar'}>
@@ -58,7 +89,7 @@ const Home = () => {
                 <div className="menuTitle">VOLUNTEER</div>
               </div>
             </Link>
-            <Link href={'/favourites'}>
+            <Link href={`/favorites/${userId}`}>
               <div className="menuItem">
                 <div className="menuButton">
                   <StarIcon />
@@ -84,6 +115,7 @@ const Home = () => {
             <VolunteerListItem
               key={organization.id}
               volunteerItem={organization}
+              favorites={favorites}
             />
           ))}
         </div>
@@ -91,5 +123,3 @@ const Home = () => {
     </div>
   )
 }
-
-export default Home
