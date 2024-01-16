@@ -4,10 +4,17 @@ The Volunteer Project is designed to facilitate and streamline the process of co
 
 ## Getting Started
 
+First of all you need to install Yarn. You can find the instructions [here](https://classic.yarnpkg.com/lang/en/docs/install).
+
+```bash
+npm install -g yarn
+```
+
 ### Production
 
 ```bash
 git clone https://github.com/VolunteerConnect/VolunteerFrontend
+yarn install
 yarn build
 yarn start
 ```
@@ -16,6 +23,7 @@ yarn start
 
 ```bash
 git clone https://github.com/VolunteerConnect/VolunteerFrontend
+yarn install
 yarn prepare
 yarn dev
 ```
@@ -30,24 +38,12 @@ We chose Next.js for our project because of its exceptional blend of performance
 
 We selected Auth0 for our project because it provides a reliable and straightforward solution for user authentication and identity management. Its robust security features, ease of integration, and strong documentation streamline the development process. Auth0 offers a secure and efficient way to manage user identities, making it the right choice for our project's authentication needs.
 
-## Definition of Done
+- Testing: Jest
 
-- Code follows coding standards and best practices.
-- All code related to the user story or feature is written and reviewed.
-- Code has been reviewed by at least one other team member for quality, correctness, and adherence to coding standards.
-- Any identified issues or improvements have been addressed.
-- The user story or feature has undergone user acceptance testing by stakeholders or users.
-- There are no known defects or critical issues related to the user story or feature.
-- The code is ready for deployment to the production environment.
+We chose Jest for our project because it is a powerful and versatile testing framework. Jest's built-in support for mocking and code coverage makes it easy to write comprehensive tests. Its simple and intuitive API makes it easy to use, and its large community and ecosystem provide ample resources and support. Jest is a reliable and efficient testing framework that will help us ensure the quality of our project.
 
-## Components
+To run tests:
 
-In NextJs, we use components because we don't want to write code twice. When we can reuse code, we will with components.
-
-## User Story
-
-**As a potential volunteer, I want to see an overview of non-profit organizations so that I can choose which organization I want to assist.**
-
-**Acceptance Criteria**
-
-- I should see a list of 5 non-profit organizations with their names, brief descriptions and a picture or logo.
+```bash
+yarn jest
+```
